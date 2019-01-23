@@ -33,6 +33,12 @@ pipeline {
             }
         }
 
+        stage('GCR authentication') {
+            steps {
+                sh 'gcloud auth configure-docker --quiet'
+            }
+        }
+
         
         
         
