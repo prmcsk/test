@@ -6,7 +6,6 @@ pipeline {
        stage('Cleaning up') {
             steps {
                 sh 'rm Dockerfile'
-                sh 'rm gce-credentials'
             }
         }
                 
