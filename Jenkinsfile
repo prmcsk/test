@@ -1,9 +1,29 @@
-node {
-    def app
+pipeline {
+    agent any
+      
+    }
     
-    stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-        app = docker.build("nexus")
+    stages {
+
+       stage('Cleaning up') {
+            steps {
+                sh 'rm -rf .'
+            }
+        }
+
+       stage('Downloading Maven cache') {
+            steps {
+                sh 'wget https://storage.googleapis.com/aliz/repository.tar'
+            }
+        }
+        
+        stage('Cloning git repo') {
+            steps {
+                sh 'git clone https://github.com/prmcsk/test.git'
+            }
+        }
+
+        
+        
     }
 }
