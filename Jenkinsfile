@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         PROJECT = 'sdn-controller-001'
-        TAG = '`cat Dockerfile | sed -n 's/.*ARG TAGVERSION=//p'`'
+        TAG = `cat Dockerfile | sed -n 's/.*ARG TAGVERSION=//p'`
     }
     
     stages {
