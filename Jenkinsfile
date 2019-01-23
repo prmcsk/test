@@ -22,5 +22,6 @@ pipeline {
                 sh 'git clone https://github.com/prmcsk/test.git'
             }
         }     
+    
     }
 }
