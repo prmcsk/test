@@ -16,7 +16,7 @@ pipeline {
 
        stage('Cleaning up') {
             steps {
-                sh 'rm Dockerfile'
+                sh 'rm Dockerf*'
                 sh 'rm gce-cred*'
             }
         }
@@ -24,12 +24,14 @@ pipeline {
        stage('Downloading Dockerfile') {
             steps {
                 sh 'wget https://storage.googleapis.com/aliz/Dockerfile'
+                sh 'wget https://storage.googleapis.com/aliz/nexus-gce-disk.yaml'
+                sh 'wget https://storage.googleapis.com/aliz/gce-credentials.json'
             }
         }
 
         stage('Downloading GCE Keyfile') {
             steps {
-                sh 'wget https://storage.googleapis.com/aliz/gce-credentials.json'
+                
             }
         }
         
