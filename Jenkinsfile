@@ -57,11 +57,10 @@ pipeline {
         stage('Create cluster') {
 
             int status = sh(script: """ 
-            gcloud beta container clusters describe --zone europe-west4-a nexus-cluster-prod
+                'gcloud beta container clusters describe --zone europe-west4-a nexus-cluster-prod'
             """, returnStatus: true)
 
             if (status != 0) {
-    // do something
                 steps {
                 sh 'echo ${status}' 
             }
