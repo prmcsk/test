@@ -28,12 +28,6 @@ pipeline {
                 sh 'wget https://storage.googleapis.com/aliz/gce-credentials.json'
             }
         }
-
-        stage('Downloading GCE Keyfile') {
-            steps {
-                
-            }
-        }
         
         stage('Docker build') {
             steps {
