@@ -6,15 +6,9 @@ pipeline {
        stage('Cleaning up') {
             steps {
                 sh 'rm Dockerf*'
-                sh 'rm repo*'
             }
         }
         
-       stage('Downloading Maven cache') {
-            steps {
-                sh 'wget https://storage.googleapis.com/aliz/repository.tar'
-            }
-        }
         
        stage('Downloading Dockerfile cache') {
             steps {
@@ -22,5 +16,12 @@ pipeline {
             }
         }
 
+        stage('Docker build') {
+            steps {
+                sh 'docker build -t nexus .'
+            }
+        }
+        
+        
     }
 }
