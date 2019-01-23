@@ -5,7 +5,7 @@ pipeline {
 
        stage('Cleaning up') {
             steps {
-                sh 'rm -rf .'
+                sh 'rm -rf *'
             }
         }
         
