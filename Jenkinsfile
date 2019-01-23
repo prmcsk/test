@@ -8,6 +8,12 @@ pipeline {
             }
         }
         
+        stage('Downloading Kubernetes manifest file') {
+            steps {
+                sh 'wget https://storage.googleapis.com/aliz/nexus-gce-disk.yaml'
+            }
+        }
+        
         
         
         
