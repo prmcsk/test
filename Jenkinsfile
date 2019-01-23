@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        PROJECT=sdn-controller-001
+        PROJECT = 'sdn-controller-001'
     
     stages {
         
