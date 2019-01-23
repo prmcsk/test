@@ -3,6 +3,7 @@ pipeline {
     
     environment {
         PROJECT = 'sdn-controller-001'
+    }
     
     stages {
         
