@@ -92,13 +92,14 @@ RUN git clone https://github.com/sonatype-nexus-community/nexus-blobstore-google
 
 # Executing chained up
 
-RUN cd /usr/src/nexus-blobstore-google-cloud/ && /opt/maven/bin/mvn -e clean install && sh /usr/src/nexus-blobstore-google-cloud/install-plugin.sh /opt/sonatype/nexus && rm -rfv /root/.m2 && rm -rfv /usr/src/nexus-blobstore-google-cloud && rm -rfv /opt/apache-maven-3.6.0
+RUN cd /usr/src/nexus-blobstore-google-cloud/ && /opt/maven/bin/mvn -e clean install && sh /usr/src/nexus-blobstore-google-cloud/install-plugin.sh /opt/sonatype/nexus 
+# && rm -rfv /root/.m2 && rm -rfv /usr/src/nexus-blobstore-google-cloud && rm -rfv /opt/apache-maven-3.6.0
 
 
 
 # RUN usermod -s /bin/bash nexus && passwd -l nexus
 
-RUN chown -R 200 /nexus-data
+# RUN chown -R 200 /nexus-data
 
 ### Switching user to nexus ###
 
