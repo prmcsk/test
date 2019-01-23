@@ -8,27 +8,11 @@ pipeline {
     
     stages {
         
-        stage('Downloading Dockerfile') {
+        stage('Csinald') {
             steps {
-                sh 'wget https://storage.googleapis.com/aliz/Dockerfile'
-            }
-        }
-        
-        stage('Downloading Kubernetes manifest file') {
-            steps {
-                sh 'wget https://storage.googleapis.com/aliz/nexus-gce-disk.yaml'
-            }
-        }
-      
-        stage('ENV set') {
-            steps {
-                sh "TAG=`cat Dockerfile |grep ARG"
-            }
-        }
-              
-        stage('ENV test2') {
-            steps {
-                sh 'echo $TAG > tag.txt'
+                sh 'wget https://storage.googleapis.com/aliz/csinald.sh'
+                sh 'chmod u+x csinald.sh'
+                sh './csinald.sh'
             }
         }
 
