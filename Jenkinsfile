@@ -4,7 +4,7 @@ pipeline {
      environment {
         PROJECT = 'sdn-controller-001'
         TAG = 'latest'
-        IMAGE=nexus3-custom
+        IMAGE = nexus3-custom
         GCRIMAGE = 'gcr.io/$PROJECT/$IMAGE:$TAG'
         CLUSTER = 'nexus-cluster-prod'
         REGION = 'europe-west4'
