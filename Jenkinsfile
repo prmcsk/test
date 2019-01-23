@@ -3,7 +3,7 @@ pipeline {
     
      environment {
         PROJECT = 'sdn-controller-001'
-        TAG = 'latest'
+        TAG = '3.15.0'
         IMAGE = 'nexus3-custom'
         GCRIMAGE = 'gcr.io/$PROJECT/$IMAGE:$TAG'
         CLUSTER = 'nexus-cluster-prod'
@@ -18,20 +18,21 @@ pipeline {
             steps {
                 sh 'rm Dockerf*'
                 sh 'rm gce-cred*'
+                sh 'rm nexus-gce*'
             }
         }
                 
        stage('Downloading Dockerfile') {
             steps {
-                sh 'wget https://storage.googleapis.com/aliz/Dockerfile'
-                sh 'wget https://storage.googleapis.com/aliz/nexus-gce-disk.yaml'
+                sh 'wget https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile'
+                sh 'wget https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml'
                 sh 'wget https://storage.googleapis.com/aliz/gce-credentials.json'
             }
         }
         
         stage('Docker build') {
             steps {
-                sh 'docker build -t gcr.io/sdn-controller-001/nexus3-custom:latest .'
+                sh 'docker build -t $GCRIMAGE -f Dockerfile .'
             }
         }
         
@@ -49,7 +50,7 @@ pipeline {
 
          stage('Container push') {
             steps {
-                sh 'docker push gcr.io/sdn-controller-001/nexus3-custom:latest'
+                sh 'docker push $GCRIMAGE'
             }
         }
         
