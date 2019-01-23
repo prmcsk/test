@@ -1,11 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        
+        stage('Download test') {
             steps {
-                echo 'Running build automation'
-                sh 'mkdir build'
+                echo 'Download test'
+                sh 'curl -s -o banner.txt https://storage.googleapis.com/aliz/banner.txt'
             }
         }
+        
+        
+        
+        
     }
 }
