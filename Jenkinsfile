@@ -22,7 +22,7 @@ pipeline {
       
         stage('ENV set') {
             steps {
-                sh "TAG=`cat Dockerfile | sed -n 's/.*ARG TAGVERSION=//p'`"
+                sh "export TAG = `cat Dockerfile | sed -n 's/.*ARG TAGVERSION=//p'`"
             }
         }
               
