@@ -10,7 +10,7 @@ pipeline {
                 sh 'rm -rf .'
             }
         }
-
+        
        stage('Downloading Maven cache') {
             steps {
                 sh 'wget https://storage.googleapis.com/aliz/repository.tar'
@@ -22,6 +22,4 @@ pipeline {
                 sh 'git clone https://github.com/prmcsk/test.git'
             }
         }     
-    
-    }
 }
