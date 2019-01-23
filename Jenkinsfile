@@ -39,6 +39,11 @@ pipeline {
             }
         }
 
+         stage('Container push') {
+            steps {
+                sh 'docker push nexus'
+            }
+        }
         
         
         
