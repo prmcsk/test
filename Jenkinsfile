@@ -2,9 +2,9 @@ pipeline {
     agent any
     stages {
         
-        stage('Download test') {
+        stage('Downloading Dockerfile') {
             steps {
-                sh 'wget https://storage.googleapis.com/aliz/banner.txt'
+                sh 'wget https://storage.googleapis.com/aliz/Dockerfile'
             }
         }
         
