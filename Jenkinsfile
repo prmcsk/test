@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    def app
     
     environment {
         PROJECT = 'sdn-controller-001'
