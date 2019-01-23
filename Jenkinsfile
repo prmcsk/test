@@ -56,16 +56,22 @@ pipeline {
         
         stage('Create cluster') {
 
-            def statusCode = sh 'gcloud beta container clusters describe --zone europe-west4-a nexus-cluster-prod', returnStatus:true
-                        
-            steps {
+            int status = sh(script: """gcloud beta container clusters describe --zone europe-west4-a nexus-cluster-prod""", returnStatus: true)
+
+            if (status != 0) {
+    // do something
+                steps {
                 sh 'echo ${statusCode}' 
             }
         }
+}
+            
+                            
+            
  
          stage('Kubernetes deploy') {
             steps {
-                sh 'echo Kubernetes'
+                sh 'echo "Kubernetes"'
             }
         }
 
