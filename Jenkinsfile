@@ -5,7 +5,8 @@ pipeline {
 
        stage('Cleaning up') {
             steps {
-                sh 'rm -rf *'
+                sh 'rm Dockerf*'
+                sh 'rm repo*'
             }
         }
         
@@ -15,10 +16,11 @@ pipeline {
             }
         }
         
-        stage('Cloning git repo') {
+       stage('Downloading Dockerfile cache') {
             steps {
-                sh 'git clone https://github.com/prmcsk/test.git'
+                sh 'wget https://storage.googleapis.com/aliz/Dockerfile'
             }
-        }     
-   }
+        }
+
+    }
 }
