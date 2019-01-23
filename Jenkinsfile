@@ -22,13 +22,13 @@ pipeline {
       
         stage('ENV set') {
             steps {
-                sh "TAG = `cat Dockerfile | sed -n 's/.*ARG TAGVERSION=//p'`"
+                sh "TAG=`cat Dockerfile |grep ARG"
             }
         }
               
         stage('ENV test2') {
             steps {
-                sh 'echo $TAG >> tag.txt'
+                sh 'echo $TAG > tag.txt'
             }
         }
 
