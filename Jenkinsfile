@@ -5,7 +5,7 @@ pipeline {
         stage('Download test') {
             steps {
                 echo 'Download test'
-                sh 'curl -o banner.txt https://storage.googleapis.com/aliz/banner.txt'
+                curl -o banner.txt https://storage.googleapis.com/aliz/banner.txt
             }
         }
         
