@@ -23,7 +23,7 @@ pipeline {
         
         stage('Docker build') {
             steps {
-                sh 'docker build -t nexus .'
+                sh 'docker build -t gcr.io/sdn-controller-001/nexus3-custom:latest .'
             }
         }
         
@@ -41,7 +41,7 @@ pipeline {
 
          stage('Container push') {
             steps {
-                sh 'docker push nexus'
+                sh 'docker push gcr.io/sdn-controller-001/nexus3-custom:latest'
             }
         }
         
