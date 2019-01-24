@@ -2,14 +2,14 @@ pipeline {
     agent any
     
      environment {
-        PROJECT = "sdn-controller-001"
-        TAG = 'latest'
+        PROJECT = 'sdn-controller-001'
+        TAG = '3.15.0'
         IMAGE = 'nexus3-custom'
         GCRIMAGE = "gcr.io/$PROJECT/$IMAGE:$TAG"
         SCLUSTER = 'nexus-cluster-stage'
         PCLUSTER = 'nexus-cluster-prod'
         REGION = 'europe-west4'
-        ZONE = "europe-west4-a"
+        ZONE = 'europe-west4-a'
         STAGING = "gke_${PROJECT}_${ZONE}_${SCLUSTER}"
         PRODUCTION = "gke_${PROJECT}_${ZONE}_${PCLUSTER}"
   
