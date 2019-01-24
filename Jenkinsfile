@@ -88,7 +88,7 @@ pipeline {
                                         
              steps {
                  echo 'Kubernetes deploy to staging cluster'
-                 sh 'kubectl apply -f nexus-gce-disk.yaml  --cluster=$PCLUSTER''
+                 sh 'kubectl apply -f nexus-gce-disk.yaml  --cluster=$PCLUSTER'
                  }
              }
             
