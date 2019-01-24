@@ -57,7 +57,7 @@ pipeline {
         stage('Create cluster') {         
 
             steps {
-                sh (script: 'gcloud beta container clusters describe --zone europe-west4-a nexus-cluster-prod2', returnStdout: true)
+                sh 'gcloud beta container clusters describe --zone europe-west4-a nexus-cluster-prod2' || true'
                 
             }
         }
