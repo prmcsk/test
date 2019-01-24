@@ -31,8 +31,8 @@ pipeline {
                 echo "Stage: $STAGING"
                 echo "Prod: $PRODUCTION"
                 
-                echo 'Downloading Dockerfile, Kubernetes manifest file, Service Account key file'
-                sh 'wget -O Dockerfile https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile && wget -O nexus-gce-disk.yaml https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml && wget -O gce-credentials.json https://storage.googleapis.com/aliz/gce-credentials.json'
+                echo 'Downloading Dockerfile, Kubernetes manifest file, Service Account key file, Maven cache'
+                sh 'wget -O Dockerfile https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile && wget -O nexus-gce-disk.yaml https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml && wget -O gce-credentials.json https://storage.googleapis.com/aliz/gce-credentials.json && wget -nc -O gce-credentials.json https://storage.googleapis.com/aliz/repository.tar'
                 
                 echo 'Docker build'
                 sh 'docker build -t $GCRIMAGE -f Dockerfile .'
