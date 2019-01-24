@@ -2,7 +2,7 @@
 
 ### Setting version tag ###
 
-ARG TAGVERSION=3.13.0
+ARG TAGVERSION=latest
 
 
 
