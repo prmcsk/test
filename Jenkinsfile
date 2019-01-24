@@ -64,6 +64,7 @@ pipeline {
                 echo 'Fetching production cluster endpoint and auth data'
                 sh 'gcloud beta container clusters get-credentials --zone=$ZONE --project=$PROJECT $PCLUSTER'
                 }
+        }
            
          stage('Deploy to staging cluster') {
              
@@ -76,6 +77,7 @@ pipeline {
                 sh 'kubectl apply -f nexus-gce-disk.yaml --cluster=$SCLUSTER'
                 }
              }
+        }
            
          stage('Deploy to production cluster') {
              
@@ -91,6 +93,5 @@ pipeline {
                  sh 'kubectl apply -f nexus-gce-disk.yaml  --cluster=$PCLUSTER'
                  }
              }
-            
     }
 }
