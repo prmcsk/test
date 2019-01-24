@@ -25,6 +25,10 @@ pipeline {
             }
                                   
             steps {
+                
+                echo "$STAGING"
+                echo "$PRODUCTION"
+                
                 echo 'Downloading Dockerfile, Kubernetes manifest file, Service Account key file'
                 sh 'wget -O Dockerfile https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile && wget -O nexus-gce-disk.yaml https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml && wget -O gce-credentials.json https://storage.googleapis.com/aliz/gce-credentials.json'
                 
@@ -68,7 +72,7 @@ pipeline {
                 echo "$PROJECT"
                  
                 echo 'Kubernetes deploy to staging cluster'
-                sh 'kubectl apply -f nexus-gce-disk.yaml --cluster="$STAGING"'
+                sh '# kubectl apply -f nexus-gce-disk.yaml --cluster="$STAGING"'
                  
                 echo "$PROJECT"
               }
@@ -85,7 +89,7 @@ pipeline {
                  milestone (1)
                                  
                  echo 'Kubernetes deploy to production cluster'
-                 sh 'kubectl apply -f nexus-gce-disk.yaml --cluster="$PRODUCTION"'
+                 sh '# kubectl apply -f nexus-gce-disk.yaml --cluster="$PRODUCTION"'
              }
          }
     }
