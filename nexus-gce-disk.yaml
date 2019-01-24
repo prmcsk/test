@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: nexus-pod
-        image: gcr.io/sdn-controller-001/nexus3-custom:3.15.1
+        image: gcr.io/sdn-controller-001/nexus3-custom:3.15.0
         ports:
         - containerPort: 8081
         volumeMounts:
