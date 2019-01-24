@@ -48,6 +48,7 @@ pipeline {
                 
                 echo 'Fetching production cluster endpoint and auth data'
                 sh 'gcloud beta container clusters get-credentials --zone=$ZONE --project=$PROJECT $PCLUSTER'
+                echo '$PROJECT'
             }
         }
             
@@ -58,8 +59,10 @@ pipeline {
             }
              
              steps {
+                echo '$PROJECT'
                 echo 'Kubernetes deploy to staging cluster'
                 sh 'kubectl apply -f nexus-gce-disk.yaml --cluster=gke_$PROJECT_$ZONE_$SCLUSTER'
+                echo '$PROJECT'
               }
          }
                    
