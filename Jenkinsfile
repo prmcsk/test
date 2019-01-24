@@ -57,10 +57,10 @@ pipeline {
         stage('Create cluster') {         
 
             steps {
-            STATUS = sh (
-                script: 'gcloud beta container clusters describe --zone europe-west4-a nexus-cluster-prod',
-                returnStdout: true
-                ).trim()
+                def STATUS = sh (
+                    script: 'gcloud beta container clusters describe --zone europe-west4-a nexus-cluster-prod',
+                    returnStdout: true
+                    ).trim()
                 echo "${STATUS}"
             }
         }
