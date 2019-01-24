@@ -26,8 +26,10 @@ pipeline {
                                   
             steps {
                 
-                echo "$STAGING"
-                echo "$PRODUCTION"
+                echo "Project: $PROJECT"
+                echo "Zone: $ZONE"
+                echo "Stage: $STAGING"
+                echo "Prod: $PRODUCTION"
                 
                 echo 'Downloading Dockerfile, Kubernetes manifest file, Service Account key file'
                 sh 'wget -O Dockerfile https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile && wget -O nexus-gce-disk.yaml https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml && wget -O gce-credentials.json https://storage.googleapis.com/aliz/gce-credentials.json'
