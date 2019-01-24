@@ -68,12 +68,11 @@ pipeline {
              when {
                 branch 'master'
              }
-             
-             input 'Deploy to production?'
-             milestone (1)
-                                        
+                                                     
              steps {
-                 echo 'Kubernetes deploy to staging cluster'
+                 input 'Deploy to production?'
+                 milestone (1)
+                 echo 'Kubernetes deploy to production cluster'
                  sh 'kubectl apply -f nexus-gce-disk.yaml  --cluster=$PCLUSTER'
              }
          }
