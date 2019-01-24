@@ -10,8 +10,8 @@ pipeline {
         PCLUSTER = 'nexus-cluster-prod'
         REGION = 'europe-west4'
         ZONE = 'europe-west4-a'
-        STAGING = 'gke_$PROJECT_$ZONE_$SCLUSTER'
-        PRODUCTION = 'gke_$PROJECT_$ZONE_$PCLUSTER'
+        STAGING = "gke_$PROJECT_$ZONE_$SCLUSTER"
+        PRODUCTION = "gke_$PROJECT_$ZONE_$PCLUSTER"
         
   
     }
