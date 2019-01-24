@@ -13,18 +13,11 @@ pipeline {
     }
     
     stages {
-
-       stage('Cleaning up') {
-            steps {
-                input 'Is you Madona?'
-                milestone(1)
-                sh 'rm Dockerf* && rm gce-cred* && rm nexus-gce*'
-            }
-        }
                 
-       stage('Downloading Dockerfile') {
+       stage('Downloading files') {
             steps {
-                sh 'wget https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile && wget https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml && wget https://storage.googleapis.com/aliz/gce-credentials.json'
+                echo 'Downloading Dockerfile, Kubernetes manifest file, Service Account key file'
+                sh 'wget -O Dockerfile https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile && wget -O nexus-gce-disk.yaml https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml && wget -O gce-credentials.json https://storage.googleapis.com/aliz/gce-credentials.json'
             }
         }
         
