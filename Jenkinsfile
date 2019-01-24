@@ -16,17 +16,13 @@ pipeline {
 
        stage('Cleaning up') {
             steps {
-                sh 'rm Dockerf*'
-                sh 'rm gce-cred*'
-                sh 'rm nexus-gce*'
+                sh 'rm Dockerf* && rm gce-cred* && rm nexus-gce*'
             }
         }
                 
        stage('Downloading Dockerfile') {
             steps {
-                sh 'wget https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile'
-                sh 'wget https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml'
-                sh 'wget https://storage.googleapis.com/aliz/gce-credentials.json'
+                sh 'wget https://raw.githubusercontent.com/prmcsk/test/master/Dockerfile && wget https://raw.githubusercontent.com/prmcsk/test/master/nexus-gce-disk.yaml && wget https://storage.googleapis.com/aliz/gce-credentials.json'
             }
         }
         
