@@ -2,14 +2,14 @@ pipeline {
     agent any
     
      environment {
-        PROJECT = 'sdn-controller-001'
+        PROJECT = "sdn-controller-001"
         TAG = '3.15.0'
         IMAGE = 'nexus3-custom'
         GCRIMAGE = "gcr.io/$PROJECT/$IMAGE:$TAG"
         SCLUSTER = 'nexus-cluster-stage'
         PCLUSTER = 'nexus-cluster-prod'
         REGION = 'europe-west4'
-        ZONE = 'europe-west4-a'
+        ZONE = "europe-west4-a"
         STAGING = "gke_$PROJECT_$ZONE_$SCLUSTER"
         PRODUCTION = "gke_$PROJECT_$ZONE_$PCLUSTER"
         
@@ -40,6 +40,8 @@ pipeline {
                 echo 'Container push'
                 sh 'docker push $GCRIMAGE'
                 
+                echo $PROJECT
+                
                 echo 'Creating staging cluster'
                 sh 'gcloud beta container --project "$PROJECT" clusters create "$SCLUSTER" --zone "$ZONE" --username "admin" --cluster-version "1.11.6-gke.3" --machine-type "n1-standard-2" --image-type "COS" --disk-type "pd-standard" --disk-size "100" --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "3" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --enable-autoupgrade --enable-autorepair || true'
                 
@@ -51,7 +53,8 @@ pipeline {
                 
                 echo 'Fetching production cluster endpoint and auth data'
                 sh 'gcloud beta container clusters get-credentials --zone=$ZONE --project=$PROJECT $PCLUSTER'
-                echo '$PROJECT'
+                
+                echo $PROJECT
             }
         }
             
@@ -62,10 +65,10 @@ pipeline {
             }
              
              steps {
-                echo '$PROJECT'
+                echo $PROJECT
                 echo 'Kubernetes deploy to staging cluster'
                 sh 'kubectl apply -f nexus-gce-disk.yaml --cluster=$STAGING'
-                echo '$PROJECT'
+                echo $PROJECT
               }
          }
                    
