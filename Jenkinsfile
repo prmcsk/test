@@ -58,6 +58,12 @@ pipeline {
             }
         }
  
+         stage('Fetching cluster endpoint and auth data') {
+            steps {
+                sh 'gcloud beta container clusters get-credentials --zone=$ZONE --project=$PROJECT $CLUSTER'
+            }
+        }
+
          stage('Kubernetes deploy') {
             steps {
                 sh 'kubectl apply -f nexus-gce-disk.yaml'
