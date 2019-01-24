@@ -16,6 +16,8 @@ pipeline {
 
        stage('Cleaning up') {
             steps {
+                input 'Is you Madona?'
+                milestone(1)
                 sh 'rm Dockerf* && rm gce-cred* && rm nexus-gce*'
             }
         }
