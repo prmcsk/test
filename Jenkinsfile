@@ -14,6 +14,7 @@ pipeline {
     }
     
     stages {
+        
         stage('Build') {
             
             when {
@@ -77,8 +78,7 @@ pipeline {
                 sh 'kubectl apply -f nexus-gce-disk.yaml --cluster=$SCLUSTER'
                 }
              }
-        }
-           
+                   
          stage('Deploy to production cluster') {
              
              when {
