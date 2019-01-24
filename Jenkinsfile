@@ -10,6 +10,9 @@ pipeline {
         PCLUSTER = 'nexus-cluster-prod'
         REGION = 'europe-west4'
         ZONE = 'europe-west4-a'
+        STAGING = 'gke_$PROJECT_$ZONE_$SCLUSTER'
+        PRODUCTION = 'gke_$PROJECT_$ZONE_$PCLUSTER'
+        
   
     }
     
@@ -61,7 +64,7 @@ pipeline {
              steps {
                 echo '$PROJECT'
                 echo 'Kubernetes deploy to staging cluster'
-                sh 'kubectl apply -f nexus-gce-disk.yaml --cluster=gke_$PROJECT_$ZONE_$SCLUSTER'
+                sh 'kubectl apply -f nexus-gce-disk.yaml --cluster=$STAGING'
                 echo '$PROJECT'
               }
          }
@@ -77,7 +80,7 @@ pipeline {
                  milestone (1)
                                  
                  echo 'Kubernetes deploy to production cluster'
-                 sh 'kubectl apply -f nexus-gce-disk.yaml --cluster=gke_$PROJECT_$ZONE_$PCLUSTER'
+                 sh 'kubectl apply -f nexus-gce-disk.yaml --cluster=$PRODUCTION'
              }
          }
     }
